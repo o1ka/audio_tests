@@ -67,6 +67,7 @@ function handleSuccess(stream) {
   voice.loop = true;
   const source = audioContext.createMediaElementSource(voice);
   source.connect(audioContext.destination);
+  voice.play();
   /*
   const osc = new OscillatorNode(audioContext);
   const amp = new GainNode(audioContext, { gain: 0.03 });
