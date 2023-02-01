@@ -11,18 +11,15 @@
 // Put variables in global scope to make them available to the browser console.
 let audioContext;
 var audio = null;
+var audio_no_aec = null;
 var audio_select_ = null;
 var sink_label_ = null;
-
-const constraints = window.constraints = {
-  audio: true,
-  video: false
-};
 
 window.onload = onLoad;
 
 function onLoad() {
-  audio = document.querySelector('audio');
+  audio = document.getElementById('gum-local');
+  audio_no_aec = document.getElementById('gum-local-noaec');
   audio_select_ = document.getElementById("audiodevice");
 //  audio_select_myaudio = document.getElementById("audiodevice_myaudio");
 //  video = document.getElementById("video");
@@ -35,7 +32,9 @@ function onLoad() {
     deviceSelected(audioContext, audio_select_, sink_label_)
   };
 
-  navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
+  navigator.mediaDevices.getUserMedia( {audio: true, video: false} ).then(handleSuccess).catch(handleError);
+  navigator.mediaDevices.getUserMedia( {audio: true, video: false} ).then(handleSuccessNoAec).catch(handleError);
+
 
 /*
   navigator.webkitGetUserMedia(
@@ -54,13 +53,13 @@ function onLoad() {
 
 function handleSuccess(stream) {
   const audioTracks = stream.getAudioTracks();
-  console.log('Got stream with constraints:', constraints);
   console.log('Using audio device: ' + audioTracks[0].label);
   stream.oninactive = function() {
     console.log('Stream ended');
   };
-  window.stream = stream; // make variable available to browser console
   audio.srcObject = stream;
+  console.log("Playing sound...");
+
   audioContext = new AudioContext();
   refreshDeviceList(true,audio_select_, sink_label_);
   var voice = new Audio("voice.m4a");
@@ -68,13 +67,18 @@ function handleSuccess(stream) {
   const source = audioContext.createMediaElementSource(voice);
   source.connect(audioContext.destination);
   voice.play();
-  /*
-  const osc = new OscillatorNode(audioContext);
-  const amp = new GainNode(audioContext, { gain: 0.03 });
-  osc.connect(amp).connect(audioContext.destination);
-  osc.start();
-  */
-  console.log("Playing sound...");
+
+  console.log("Playing WebAudio voice...");
+}
+
+function handleSuccessNoAec(stream) {
+  const audioTracks = stream.getAudioTracks();
+  console.log('Using audio device: ' + audioTracks[0].label);
+  stream.oninactive = function() {
+    console.log('Stream ended');
+  };
+  audio_no_aec.srcObject = stream;
+  console.log("Playing sound no aec...");
 }
 
 function handleError(error) {
