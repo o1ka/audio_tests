@@ -63,6 +63,11 @@ function handleSuccess(stream) {
   audio.srcObject = stream;
   audioContext = new AudioContext();
   refreshDeviceList(true,audio_select_, sink_label_);
+  const osc = new OscillatorNode(audioContext);
+  const amp = new GainNode(audioContext, { gain: 0.03 });
+  osc.connect(amp).connect(audioContext.destination);
+  osc.start();
+  console.log("Playing sound...");
 }
 
 function handleError(error) {
