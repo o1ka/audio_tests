@@ -111,17 +111,23 @@ function deviceSelected(elem, audio_select, sink_label) {
   var deviceId = null;
   if (audio_select.options.length > 0) {
     deviceId = audio_select.options[audio_select.selectedIndex].value;
+    sinkId = deviceIdToSinkId(ddeviceId);
     var promise = elem.setSinkId(deviceId);
     promise.then(function(result) {
-      sink_label.innerHTML = 'Audio output device sink ID is ' + elem.sinkId;
+      sink_label.innerHTML = 'AudioContext output device sink ID is ' + elem.sinkId;
     }, function(e) {
-      sink_label.innerHTML = 'Audio output device could not be set: ' + e.name + ' - ' + e.message;
+      sink_label.innerHTML = 'AudioContext output device could not be set: ' + e.name + ' - ' + e.message;
     });
   } else {
     alert("No audio devices found");
   }
 }
 
+function deviceIdToSinkId(deviceId) {
+  if (deviceId === "default") return "";
+  if (deviceId === "silent") return { type: "none" };
+  return deviceId;
+}
 
 
 
