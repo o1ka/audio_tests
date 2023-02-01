@@ -111,8 +111,8 @@ function deviceSelected(elem, audio_select, sink_label) {
   var deviceId = null;
   if (audio_select.options.length > 0) {
     deviceId = audio_select.options[audio_select.selectedIndex].value;
-    sinkId = deviceIdToSinkId(ddeviceId);
-    var promise = elem.setSinkId(deviceId);
+    sinkId = deviceIdToSinkId(deviceId);
+    var promise = elem.setSinkId(sinkId);
     promise.then(function(result) {
       sink_label.innerHTML = 'AudioContext output device sink ID is ' + elem.sinkId;
     }, function(e) {
