@@ -67,8 +67,10 @@ function handleError(error) {
 
 function refreshDeviceList(selectFirst, audio_select, sink_label) {
   navigator.mediaDevices.enumerateDevices().then( function(infos) {
+    /*
     const defaultAudioInput = infos.filter((infos) => infos.kind == "audioinput" && infos.deviceId == "default");
     mic_label.innerHTML = 'Microphne: ' + defaultAudioInput.label;
+    */
     var count = 0;
     var curValue = audio_select.options[audio_select.selectedIndex].value;
     var curValueFound = false;
