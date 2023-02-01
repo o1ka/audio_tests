@@ -1,3 +1,4 @@
+/* some scrappy code to make it work */
 
 'use strict';
 
@@ -7,6 +8,7 @@ var audio = null;
 var audio_no_aec = null;
 var audio_select_ = null;
 var sink_label_ = null;
+var mic_label = null;
 
 window.onload = onLoad;
 
