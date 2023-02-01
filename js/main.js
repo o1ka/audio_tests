@@ -33,7 +33,7 @@ function onLoad() {
   };
 
   navigator.mediaDevices.getUserMedia( {audio: true, video: false} ).then(handleSuccess).catch(handleError);
-  navigator.mediaDevices.getUserMedia( {audio: true, video: false} ).then(handleSuccessNoAec).catch(handleError);
+  navigator.mediaDevices.getUserMedia( {audio: { echoCancellation: false }, video: false} ).then(handleSuccessNoAec).catch(handleError);
 
 
 /*
