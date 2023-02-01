@@ -21,11 +21,13 @@
     
     <label id="miclabel"></label><br><br>
 
+    <p> Make sure the default output is headphones </p>
+    
     <p>Render the audio stream from an audio-only <code>getUserMedia()</code> call with an audio element to the default output device.</p>
-    <p> With echo cancellaiont: </p>
+    <p> With echo cancellaiont: should not pick up AudioContext playback to the loudspeakers</p>
     <audio id="gum-local" controls autoplay></audio>
 
-    <p> Without echo cancellaiont: </p>
+    <p> Without echo cancellaiont: should pick up AudioContext playback to the loudspeakers</p>
     <audio id="gum-local-noaec" controls autoplay></audio>
 
     <div>
@@ -33,10 +35,10 @@
     </div>
 
 </div>
-
+    
 <label id="sinklabel"></label><br><br>
-
 Change AudioContext output device: <select id="audiodevice"><option value="invalid"></option></select><br><br>
+<p> Switch it to play to the loudspeakers </p>
 <script src="js/main.js"></script>
 
 </div>
