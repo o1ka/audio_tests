@@ -88,6 +88,13 @@ function refreshDeviceList(selectFirst, audio_select, sink_label) {
         curValueFound = true;
       }
     }
+    var option_silent = document.createElement("option");
+    option_silent.value = "silent";
+    option_silent.text = "No output";
+    audio_select.appendChild(option_silent);
+    if (option_silent.value == curValue) {
+      curValueFound = true;
+    }
     audio_select.disabled = false;
     if (selectFirst) {
       console.log("selectFirst");
