@@ -127,7 +127,7 @@ function deviceSelected(elem, audio_select, sink_label) {
 }
 
 function deviceIdToSinkId(deviceId) {
-  // if (deviceId === "default") return "";
+  if (deviceId === "default") return "";
   if (deviceId === "silent") return { type: "none" };
   return deviceId;
 }
