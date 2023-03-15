@@ -21,16 +21,19 @@
     
     <label id="miclabel"></label><br><br>
 
-    <p> Make sure the default output is headphones </p>
-    <p> Choose a loudspeaker from the drop-down for AudioContect output </p>
-    <p> Now: </p>
-    <p> The two media elements are playing stream received by getUserMedia() to the default output (headphones), </p>
-    <p> AudioContext is playing a recording to the loudspeaker, so the sound will be picked up by the microphone </p>
-    <p> It should be heared in your headphones when "Without echo cancellation" media element is playing, </p>
-    <p> but should not be heard when "With echo cancellation" media element is playing. </p>
-
+    * Make sure to have loudspeakers, headphones and at least one microphone available.
+    * Make sure the system-default output is set to headphones. (Reload this page if you have changed it.)
+    * Choose a loudspeaker from the drop-down for AudioContext output.
     
-    <h1>Rendering the audio stream from an audio-only <code>getUserMedia()</code> call with an audio element to the default output device.</h1>
+    <b>Now: </b>
+    * The two media elements below are playing the mic stream from getUserMedia() to the default output (headphones),
+    * AudioContext is playing a recording to the loudspeaker, so the sound will be picked up by the microphone.
+    * AudioContext playback should be heard in your headphones when "Without echo cancellation" media element is playing.
+    * If you pause "Without echo cancellation" media element, so that only "With echo cancellation" media element is playing,
+      only your own voice picked up by the microphone should be heard in your headphones: AudioContext playback should be removed.
+
+    (Please ignore playback pitch shift when switching the output device, it's an unrelated issue)
+    
     <p> <b>With echo cancellation:</b> should not pick up AudioContext playback to the loudspeakers</p>
     <audio id="gum-local" controls autoplay></audio>
 
@@ -44,7 +47,7 @@
 </div>
     
 <label id="sinklabel"></label><br><br>
-Change AudioContext output device: <select id="audiodevice"><option value="invalid"></option></select><br><br>
+Change AudioContext output device (choose the laudspeaker): <select id="audiodevice"><option value="invalid"></option></select><br><br>
 <p> Switch it to play to the loudspeakers </p>
 <script src="js/main.js"></script>
 
