@@ -22,6 +22,13 @@
     <label id="miclabel"></label><br><br>
 
     <p> Make sure the default output is headphones </p>
+    <p> Choose a loudspeaker from the drop-down for AudioContect output </p>
+    <p> Now: </p>
+    <p> The two media elements are playing stream received by getUserMedia() to the default output (headphones), </p>
+    <p> AudioContext is playing a recording to the loudspeaker, so the sound will be picked up by the microphone </p>
+    <p> It should be heared in your headphones when "Without echo cancellation" media element is playing, </p>
+    <p> but should not be heard when "With echo cancellation" media element is playing. </p>
+
     
     <h1>Rendering the audio stream from an audio-only <code>getUserMedia()</code> call with an audio element to the default output device.</h1>
     <p> <b>With echo cancellation:</b> should not pick up AudioContext playback to the loudspeakers</p>
