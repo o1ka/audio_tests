@@ -21,18 +21,18 @@
     
     <label id="miclabel"></label><br><br>
 
-    * Make sure to have loudspeakers, headphones and at least one microphone available.
-    * Make sure the system-default output is set to headphones. (Reload this page if you have changed it.)
-    * Choose a loudspeaker from the drop-down for AudioContext output.
+    * Make sure to have loudspeakers, headphones and at least one microphone available.<br>
+    * Make sure the system-default output is set to headphones. (Reload this page if you have changed it.)<br>
+    * Choose a loudspeaker from the drop-down for AudioContext output.<br><br>
     
-    <b>Now: </b>
-    * The two media elements below are playing the mic stream from getUserMedia() to the default output (headphones),
-    * AudioContext is playing a recording to the loudspeaker, so the sound will be picked up by the microphone.
-    * AudioContext playback should be heard in your headphones when "Without echo cancellation" media element is playing.
-    * If you pause "Without echo cancellation" media element, so that only "With echo cancellation" media element is playing,
-      only your own voice picked up by the microphone should be heard in your headphones: AudioContext playback should be removed.
+    <b>Now: </b><br><br>
+    * The two media elements below are playing the mic stream from getUserMedia() to the default output (headphones),<br>
+    * AudioContext is playing a recording to the loudspeaker, so the sound will be picked up by the microphone.<br>
+    * AudioContext playback should be heard in your headphones when "Without echo cancellation" media element is playing.<br>
+    * If you pause "Without echo cancellation" media element, so that only "With echo cancellation" media element is playing,<br>
+      only your own voice picked up by the microphone should be heard in your headphones: AudioContext playback should be removed.<br><br>
 
-    (Please ignore playback pitch shift when switching the output device, it's an unrelated issue)
+    (Please ignore playback pitch shift when switching the output device, it's an unrelated issue)<br><br>
     
     <p> <b>With echo cancellation:</b> should not pick up AudioContext playback to the loudspeakers</p>
     <audio id="gum-local" controls autoplay></audio>
@@ -45,7 +45,7 @@
     </div>
 
 </div>
-    
+<br>    
 <label id="sinklabel"></label><br><br>
 Change AudioContext output device (choose the laudspeaker): <select id="audiodevice"><option value="invalid"></option></select><br><br>
 <p> Switch it to play to the loudspeakers </p>
